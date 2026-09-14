@@ -14,15 +14,25 @@ export class MainCalculator {
   nummer: number[] = [0,0]
   n : number = 0;
 
-  flag_plus_minus: boolean = false;
-  flag_plus: boolean = false;
-  flag_minus: boolean = false;
-  flag_multiply: boolean = false;
-  flag_divide: boolean = false;
+  //Flags 2
+  flags2: boolean[] = [];
+  flags2_N: number = 10;
+  //[0]: flag_plus
+  //[1]: flag_minus
+  //[2]: flag_multiply
+  //[3]: flag_divide
+  //[4]: flag_YPowX;
+  //[5]: flag_XSqrtY;
+
+  //Flags 1
   flag_sin: boolean = false;
   flag_cos: boolean = false;
   flag_tan: boolean = false;
-  //flag_1_x: boolean = false;
+  flag_1_x: boolean = false;
+
+  //Flag plus-minus
+  flag_plus_minus: boolean = false;
+
   flag_fS_clicked: boolean = false;
 
   f1_flags : boolean[] = [false, false, false, false];
@@ -102,13 +112,9 @@ export class MainCalculator {
   }    
 
   input_plus() : void{
-    if((this.flag_minus == true)|| (this.flag_multiply == true) || (this.flag_divide == true)){//Wenn bereits eins der doppel-Parameter-Funktionen Knopfen gedrückt wurde
-      //dann 
-      this.flag_minus = false;
-      this.flag_multiply = false;
-      this.flag_divide = false;
-      this.f_unselect_buttons();
-    }
+    this.f_unselect_buttons();
+    this.unsetFlags2_except(0);
+
     if(!this.flag_delete_input){
       if(this.flag_number_one){
         this.number1 = Number(this.display);  
@@ -122,17 +128,15 @@ export class MainCalculator {
       }      
     }
     this.display = "";
-    this.flag_plus = true;
+    this.flags2[0] = true;
     var element = <HTMLSelectElement>document.getElementById("f1");
     element.style.backgroundColor = this.f_color;    
   }
+
   input_minus() : void{
-    if((this.flag_plus == true)|| (this.flag_multiply == true) || (this.flag_divide == true)){//Wenn bereits eins der doppel-Parameter-Funktionen Knopfen gedrückt wurde
-      this.flag_plus = false;
-      this.flag_multiply = false;
-      this.flag_divide = false;      
-      this.f_unselect_buttons();  
-    }    
+    this.f_unselect_buttons();
+    this.unsetFlags2_except(1);
+
     if(!this.flag_delete_input){
       if(this.flag_number_one){
         this.number1 = Number(this.display);  
@@ -146,17 +150,14 @@ export class MainCalculator {
       }      
   }
     this.display = "";
-    this.flag_minus = true;
+    this.flags2[1] = true;
     var element = <HTMLSelectElement>document.getElementById("f2");
     element.style.backgroundColor = this.f_color;      
   }
+
   input_mal() : void{
-    if((this.flag_plus == true)|| (this.flag_minus == true) || (this.flag_divide == true)){//Wenn bereits eins der doppel-Parameter-Funktionen Knopfen gedrückt wurde
-      this.flag_plus = false;
-      this.flag_minus = false;
-      this.flag_divide = false;      
-      this.f_unselect_buttons();  
-    }    
+    this.f_unselect_buttons();
+    this.unsetFlags2_except(2);
     if(!this.flag_delete_input){
       if(this.flag_number_one){
         this.number1 = Number(this.display);  
@@ -170,18 +171,16 @@ export class MainCalculator {
       }      
   }
     this.display = "";
-    this.flag_multiply = true;
+    this.flags2[2] = true;
     var element = <HTMLSelectElement>document.getElementById("f3");
     element.style.backgroundColor = this.f_color;       
   }
+
   input_divide() : void{
-    if((this.flag_plus == true)|| (this.flag_minus == true) || (this.flag_multiply == true)){//Wenn bereits eins der doppel-Parameter-Funktionen Knopfen gedrückt wurde
-      this.flag_plus = false;
-      this.flag_minus = false;
-      this.flag_multiply = false;  
-    }    
+    this.f_unselect_buttons();
+    this.unsetFlags2_except(3);
     if(!this.flag_delete_input){
-      this.flag_divide = true;      
+      this.flags2[3] = true;      
       if(this.flag_number_one && (!this.flag_result)){
         this.number1 = Number(this.display);  
         this.flag_number_one = false;
@@ -190,17 +189,61 @@ export class MainCalculator {
       }
       else{
         this.number2 = Number(this.display)
-        this.result = 5.2; //this.number1 / Number(this.number2);
         this.flag_result = false;
         this.flag_number_one = true;
         this.display = String(this.result);
-        this.flag_divide = false;
       }      
       var element = <HTMLSelectElement>document.getElementById("f4");
       element.style.backgroundColor = this.f_color;  
     }     
   }
 
+  input_YPowX() : void{
+    this.f_unselect_buttons();
+    this.unsetFlags2_except(4); 
+    if(!this.flag_delete_input){
+      this.flags2[4] = true;      
+      if(this.flag_number_one && (!this.flag_result)){
+        this.number1 = Number(this.display);  
+        this.flag_number_one = false;
+        this.flag_result = true;
+        this.display = "";
+      }
+      else{
+        this.number2 = Number(this.display)
+        this.flag_result = false;
+        this.flag_number_one = true;
+        this.display = String(this.result);
+      }      
+      var element = <HTMLSelectElement>document.getElementById("f_2_YPowX");
+      element.style.backgroundColor = this.f_color;  
+    }     
+  }  
+
+  input_XSqrtY() : void{
+    this.f_unselect_buttons();
+    this.unsetFlags2_except(5); 
+    if(!this.flag_delete_input){
+      this.flags2[5] = true;      
+      if(this.flag_number_one && (!this.flag_result)){
+        this.number1 = Number(this.display);  
+        this.flag_number_one = false;
+        this.flag_result = true;
+        this.display = "";
+      }
+      else{
+        this.number2 = Number(this.display)
+        this.flag_result = false;
+        this.flag_number_one = true;
+        this.display = String(this.result);
+      }      
+      var element = <HTMLSelectElement>document.getElementById("f_2_XSqrtY");
+      element.style.backgroundColor = this.f_color;  
+    }     
+  }  
+  
+  
+  //############################################################################################
   input_sin() : void{
     if(this.flag_number_one){
       if((Number(this.display) % 180) == 0){//correct accuracy error, because PI is an irrational number
@@ -358,9 +401,41 @@ export class MainCalculator {
     element.style.backgroundColor = this.f_color;    
   }    
 
+  input_PI() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.result = Math.PI;
+      this.display = String(this.result);
+    }
+    else{
+      this.result = Number(this.display);
+      this.result = Math.PI;
+      this.display = String(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_PI");
+    element.style.backgroundColor = this.f_color;    
+  }
+  
+  input_LN() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.result = Math.E;
+      this.display = String(this.result);
+    }
+    else{
+      this.result = Number(this.display);
+      this.result = Math.E;
+      this.display = String(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_LN");
+    element.style.backgroundColor = this.f_color;    
+  }      
+
   input() : void{
     this.f_unselect_buttons();
-    if(this.flag_plus){  
+    if(this.flags2[0]){ // a + b
       if(this.flag_number_one){ 
         this.flag_number_one = false;
         this.flag_result = true;
@@ -377,7 +452,7 @@ export class MainCalculator {
       element.style.backgroundColor = this.default_color;
       this.flag_delete_input = false;
     }
-    else if(this.flag_minus){    
+    else if(this.flags2[1]){ // a - b
       if(this.flag_number_one){
         this.flag_number_one = false;
         this.flag_result = true;
@@ -388,12 +463,12 @@ export class MainCalculator {
         this.flag_number_one = true;
       }    
       this.display = String(this.number1 - this.result);
-      this.flag_minus = false;  
+      this.flags2[1] = false;  
       var element = <HTMLSelectElement>document.getElementById("f2");
       element.style.backgroundColor = this.default_color;  
       this.flag_delete_input = false;     
     }
-    else if(this.flag_multiply){    
+    else if(this.flags2[2]){ // a * b
       if(this.flag_number_one){ 
         this.flag_number_one = false;
         this.flag_result = true;
@@ -404,11 +479,11 @@ export class MainCalculator {
         this.flag_number_one = true;
       }    
       this.display = String(this.number1 * this.result);
-      this.flag_multiply = false;  
+      this.flags2[2] = false;  
       var element = <HTMLSelectElement>document.getElementById("f3");
       element.style.backgroundColor = this.default_color;       
     }
-    else if(this.flag_divide){    
+    else if(this.flags2[3]){ // a / b
       if(this.flag_number_one){ 
         this.flag_number_one = false;
         this.flag_result = true;
@@ -419,11 +494,42 @@ export class MainCalculator {
         this.flag_number_one = true;
       }    
       this.display = String(this.number1 / this.number2);
-      this.flag_multiply = false;  
+      this.flags2[3] = false;  
       var element = <HTMLSelectElement>document.getElementById("f3");
       element.style.backgroundColor = this.default_color;       
     }
+    else if(this.flags2[4]){ // x^y
+      if(this.flag_number_one){ 
+        this.flag_number_one = false;
+        this.flag_result = true;
+      }
+      else{
+        this.number2 = Number(this.display);
+        this.flag_result = false;
+        this.flag_number_one = true;
+      }    
+      this.display = String(Math.pow(this.number1, this.number2));
+      this.flags2[4] = false;  
+      var element = <HTMLSelectElement>document.getElementById("f_2_YPowX");
+      element.style.backgroundColor = this.default_color;       
+    }  
+    else if(this.flags2[5]){ // xSqrt(y)
+      if(this.flag_number_one){ 
+        this.flag_number_one = false;
+        this.flag_result = true;
+      }
+      else{
+        this.number2 = Number(this.display);
+        this.flag_result = false;
+        this.flag_number_one = true;
+      }    
+      this.display = String(Math.pow(this.number2, (1 / this.number1)));
+      this.flags2[5] = false;  
+      var element = <HTMLSelectElement>document.getElementById("f_2_XSqrtY");
+      element.style.backgroundColor = this.default_color;       
+    }        
 
+    //#################################################################################
     else if(this.flag_sin){    
       if(this.flag_number_one){
         this.number1 = Number(Math.sin(Number(this.display) * Math.PI / 180.0));
@@ -484,10 +590,20 @@ export class MainCalculator {
     this.display = "";
     this.result = 0;
   }
+
   f_unselect_buttons(): void{
     const a = <HTMLSelectElement>document.getElementsByClassName('arithmetical_operations_input_button');
     for(const i of a){
       i.style.backgroundColor = "#FFFFFF";
     }
+  }
+
+  //Unsets all flags except one.
+  unsetFlags2_except(flagIndex: number): void{
+    for(let i = 0; i < this.flags2_N; i++){
+      this.flags2[i] = false;       
+    }
+
+    this.flags2[flagIndex] = true;
   }
 }  
