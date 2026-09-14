@@ -203,13 +203,23 @@ export class MainCalculator {
 
   input_sin() : void{
     if(this.flag_number_one){
-      this.number1 = Number(Math.sin(Number(this.display) * Math.PI / 180.0));
+      if((Number(this.display) % 180) == 0){//correct accuracy error, because PI is an irrational number
+        this.number1 = 0;
+      }
+      else{
+        this.number1 = Number(Math.sin(Number(this.display) * Math.PI / 180.0));        
+      }      
       this.display = String(this.number1); 
       this.flag_number_one = false;
       this.flag_result = true;
     }
     else{
-      this.result = Number(Math.sin(Number(this.display) * Math.PI / 180.0));
+      if((Number(this.display) % 180) == 0){//correct accuracy error, because PI is an irrational number
+        this.number1 = 0;
+      }
+      else{
+        this.number1 = Number(Math.sin(Number(this.display) * Math.PI / 180.0));        
+      } 
       this.display = String(this.result);
       this.flag_result = false;
       this.flag_number_one = true;
@@ -222,13 +232,23 @@ export class MainCalculator {
 
   input_cos() : void{
     if(this.flag_number_one){
-      this.number1 = Number(Math.cos(Number(this.display) * Math.PI / 180.0));
-      this.display = String(this.number1); 
+      if((Number(this.display) % 90) == 0){//correct accuracy error, because PI is an irrational number
+        this.number1 = 0;
+      }
+      else{
+        this.number1 = Number(Math.cos(Number(this.display) * Math.PI / 180.0));        
+      }
+      this.display = String(this.number1);
       this.flag_number_one = false;
       this.flag_result = true;
     }
     else{
-      this.result = Number(Math.cos(Number(this.display) * Math.PI / 180.0));
+      if((Number(this.display) % 90) == 0){//correct accuracy error, because PI is an irrational number
+        this.result = 0;
+      }
+      else{
+        this.result = Number(Math.cos(Number(this.display) * Math.PI / 180.0));        
+      }
       this.display = String(this.result);
       this.flag_result = false;
       this.flag_number_one = true;
