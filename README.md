@@ -15,7 +15,8 @@
 #### Do you want to enable Serever-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? (y/N)
 ##### N
 ### ng generate component main-calculator
-#### type the command above when you are in the directory of this project
+### ng generate component polynomial-equations
+#### type the 2 commands above when you are in the directory of this project
 ### Then replace the src folder in your newly created angular project with the src folder in this repository.
 ### Then go to the directory of this project and type in: ng serve --open
 # This project is still in progress..
