@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { MainCalculator } from './main-calculator/main-calculator';
+import { PolynomialEquations } from './polynomial-equations/polynomial-equations';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App, MainCalculator],
+      imports: [App, MainCalculator, PolynomialEquations],
     }).compileComponents();
   });
 
