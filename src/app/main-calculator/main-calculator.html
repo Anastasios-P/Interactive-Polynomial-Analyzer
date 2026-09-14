@@ -1,0 +1,41 @@
+<h1>Extended Calculator</h1>
+<div>
+    <input [(ngModel)] = "display" type = "text" value = "" class = show_input>
+    <button (click) = "input_delete_backwards()" class = "correct_input_button"><</button>      
+</div>
+<div> 
+    <button (click) = "input()" class = "input_calculate_button">Calculate</button> 
+    <button (click) = "delete()" class = "input_delete_button">Delete</button>     
+</div>
+<div>
+<button (click) = "input_1()" class = "input_button">1</button>
+<button (click) = "input_2()" class = "input_button">2</button>
+<button (click) = "input_3()" class = "input_button">3</button>
+
+<button (click) = "input_plus()" class = "arithmetical_operations_input_button" id = "f1">+</button> 
+<button (click) = "input_sin()" class = "arithmetical_operations_input_button" id = "f_sin">sin</button>
+</div>
+<div>
+<button (click) = "input_4()" class = "input_button">4</button>
+<button (click) = "input_5()" class = "input_button">5</button>
+<button (click) = "input_6()" class = "input_button">6</button>
+
+<button (click) = "input_minus()" class = "arithmetical_operations_input_button" id = "f2">-</button>  
+<button (click) = "input_cos()" class = "arithmetical_operations_input_button" id = "f_cos">cos</button>  
+</div>
+<div>
+<button (click) = "input_7()" class = "input_button">7</button>
+<button (click) = "input_8()" class = "input_button">8</button>
+<button (click) = "input_9()" class = "input_button">9</button>
+
+<button (click) = "input_mal()" class = "arithmetical_operations_input_button" id = "f3">*</button> 
+<button (click) = "input_tan()" class = "arithmetical_operations_input_button" id = "f_tan">tan</button>
+</div>
+<div>
+<button (click) = "input_0()" class = "input_button">0</button>  
+<button (click) = "input_comma()" class = "input_button">.</button>  
+<button (click) = "input_plus_minus()" class = "input_button">+|-</button>  
+
+<button (click) = "input_divide()" class = "arithmetical_operations_input_button" id = "f4">/</button> 
+<button (click) = "input_1_x()" class = "arithmetical_operations_input_button" id = "f_1_x">1/x</button>
+</div>
