@@ -296,9 +296,87 @@ export class MainCalculator {
     this.f_unselect_buttons();
     var element = <HTMLSelectElement>document.getElementById("f_1_x");
     element.style.backgroundColor = this.f_color;
-
   }    
 
+  input_log() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.flag_number_one = false;
+      this.flag_result = true;
+      this.result = Math.log10(this.number1);
+      this.display = String(this.result);
+    }
+    else{
+      this.result = Number(this.display);
+      this.flag_result = false;
+      this.flag_number_one = true;
+      this.result = Math.log10(this.result);
+      this.display = String(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_log");
+    element.style.backgroundColor = this.f_color;    
+  }
+
+  input_sqrt() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.flag_number_one = false;
+      this.flag_result = true;
+      this.result = Math.sqrt(this.number1);
+      this.display = String(this.result);
+    }
+    else{
+      this.result = Number(this.display);
+      this.flag_result = false;
+      this.flag_number_one = true;
+      this.result = Math.sqrt(this.result);
+      this.display = String(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_sqrt");
+    element.style.backgroundColor = this.f_color;    
+  }
+
+  input_xPow2() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.flag_number_one = false;
+      this.flag_result = true;
+      this.result = this.number1 * this.number1;
+      this.display = String(this.result);
+    }
+    else{
+      this.result = Number(this.display);
+      this.flag_result = false;
+      this.flag_number_one = true;
+      this.result = this.result * this.result;
+      this.display = String(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_xPow2");
+    element.style.backgroundColor = this.f_color;    
+  }  
+
+  input_xPow3() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.flag_number_one = false;
+      this.flag_result = true;
+      this.result = this.number1 * this.number1 * this.number1;
+      this.display = String(this.result);
+    }
+    else{
+      this.result = Number(this.display);
+      this.flag_result = false;
+      this.flag_number_one = true;
+      this.result = this.result * this.result * this.result;
+      this.display = String(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_xPow3");
+    element.style.backgroundColor = this.f_color;    
+  }    
 
   input() : void{
     this.f_unselect_buttons();
