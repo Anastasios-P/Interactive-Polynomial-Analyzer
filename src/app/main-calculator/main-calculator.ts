@@ -215,10 +215,10 @@ export class MainCalculator {
     }
     else{
       if((Number(this.display) % 180) == 0){//correct accuracy error, because PI is an irrational number
-        this.number1 = 0;
+        this.result = 0;
       }
       else{
-        this.number1 = Number(Math.sin(Number(this.display) * Math.PI / 180.0));        
+        this.result = Number(Math.sin(Number(this.display) * Math.PI / 180.0));        
       } 
       this.display = String(this.result);
       this.flag_result = false;
