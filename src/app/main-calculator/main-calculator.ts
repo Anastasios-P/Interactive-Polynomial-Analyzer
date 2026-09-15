@@ -242,7 +242,6 @@ export class MainCalculator {
     }     
   }  
   
-  
   //############################################################################################
   input_sin() : void{
     if(this.flag_number_one){
@@ -401,6 +400,37 @@ export class MainCalculator {
     element.style.backgroundColor = this.f_color;    
   }    
 
+  input_e_x() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.result = Math.pow(Math.E, this.number1);
+      this.display = String(this.result);
+    }
+    else{
+      this.result = Number(this.display);
+      this.result = Math.pow(Math.E, this.result);
+      this.display = String(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_e_x");
+    element.style.backgroundColor = this.f_color;    
+  }    
+
+  input_factorial() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.display = this.factorial(this.number1);
+    }
+    else{
+      this.result = Number(this.display);
+      this.display = this.factorial(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_factorial");
+    element.style.backgroundColor = this.f_color;    
+  }    
+
+  //###############################################################################
   input_PI() : void{
     if(this.flag_number_one){
       this.number1 = Number(this.display);  
@@ -431,7 +461,39 @@ export class MainCalculator {
     this.f_unselect_buttons();
     var element = <HTMLSelectElement>document.getElementById("f_1_LN");
     element.style.backgroundColor = this.f_color;    
-  }      
+  }   
+  
+  input_f() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.result = 1.61803398874989;
+      this.display = String(this.result);
+    }
+    else{
+      this.result = Number(this.display);
+      this.result = 1.61803398874989;
+      this.display = String(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_f");
+    element.style.backgroundColor = this.f_color;    
+  }  
+  
+  input_sqrt2() : void{
+    if(this.flag_number_one){
+      this.number1 = Number(this.display);  
+      this.result = Math.SQRT2;
+      this.display = String(this.result);
+    }
+    else{
+      this.result = Number(this.display);
+      this.result = Math.SQRT2;
+      this.display = String(this.result);
+    }
+    this.f_unselect_buttons();
+    var element = <HTMLSelectElement>document.getElementById("f_1_sqrt2");
+    element.style.backgroundColor = this.f_color;    
+  }     
 
   input() : void{
     this.f_unselect_buttons();
@@ -523,11 +585,11 @@ export class MainCalculator {
         this.flag_result = false;
         this.flag_number_one = true;
       }    
-      this.display = String(Math.pow(this.number2, (1 / this.number1)));
+      this.display = String(Math.pow(this.number1, (1 / this.number2)));
       this.flags2[5] = false;  
       var element = <HTMLSelectElement>document.getElementById("f_2_XSqrtY");
       element.style.backgroundColor = this.default_color;       
-    }        
+    }              
 
     //#################################################################################
     else if(this.flag_sin){    
@@ -605,5 +667,18 @@ export class MainCalculator {
     }
 
     this.flags2[flagIndex] = true;
+  }
+
+  //#################################### Math functions ######################################
+  factorial(n: number): string{
+    if(n < 0){
+      return "ERROR!";
+    }
+    let result = 1;
+    for(let i = 1; i <= n; i++){
+      result = result * i;
+    }
+
+    return String(result);
   }
 }  
