@@ -12,6 +12,7 @@ export class PolynomialEquations {
   x: string = "";
   x1: string = "";
   x2: string = "";
+  x3: string = "";
 
   result: string = "";
 
@@ -39,11 +40,12 @@ export class PolynomialEquations {
     // if D < 0 then No real number/s solution.
     // if D = 0 then The solution is one real number repeated twice.
     // if D > 0 then There are 2 solutions.
-    // x1, x2 = (-b ± D)/(2a) : a ≠ 0
+    // x1, x2 = (-b ± sqrt(D))/(2a) : a ≠ 0
 
     let a = Number(this.x2);
     let b = Number(this.x1);
     let c = Number(this.x);
+
     let D = (b * b) - (4 * a * c);
 
     let solution = 0;
@@ -67,4 +69,24 @@ export class PolynomialEquations {
       }
     }
   }  
+
+  calculateEquation3(): void{
+    // ax³ + bx² + cx + d = 0, a = x3, b = x2, c = x1, d = x
+    // E = 2b³ - 9abc + 27a²d
+    // F = b² - 3ac
+    // G = E² - 4(F³)
+    // x = -(b/3a) - ((1/3a) * cbrt(0.5(E + sqrt(G)))) - ((1/3a) * cbrt(0.5(E - sqrt(G)))) : a ≠ 0
+
+    let a = Number(this.x3);
+    let b = Number(this.x2);
+    let c = Number(this.x1);
+    let d = Number(this.x);
+
+    let E = (2 * b * b * b) - (9 * a * b * c) + (27 * a * a * d);
+    let F = (b * b) - (3 * a * c);
+    let G = (E * E) - (4 * F * F * F);
+    
+    let solution = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G))));
+    this.result = "The solution of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers is " + String(solution);
+  }
 }
