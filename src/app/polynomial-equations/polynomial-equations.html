@@ -28,12 +28,27 @@
         <br>
         <button (click) = "calculateEquation1()" class = "big_comment_1">Calculate</button>
         <br><br>
-        <label class = "big_comment_1">{{solution1}}</label>
+        <label class = "big_comment_1">{{result}}</label>
     </div>
 }
 @else if(chosenPolynomialDegree == "2"){
     <div>
         <label class = "big_comment_2">Please fill in the 2. degree equation:</label>
+        <br>
+        <input [(ngModel)] = "x2" type = "text" value = "" class = "equation2">
+        <label class = "equation2">x² + </label>
+
+        <input [(ngModel)] = "x1" type = "text" value = "" class = "equation2">
+        <label class = "equation1">x + </label>
+
+        <input [(ngModel)] = "x" type = "text" value = "" class = "equation2">
+        <label class = "equation2"> = 0</label>
+    </div>
+    <div>
+        <br>
+        <button (click) = "calculateEquation2()" class = "big_comment_2">Calculate</button>
+        <br><br>
+        <label class = "big_comment_1">{{result}}</label>
     </div>
 }
 @else if(chosenPolynomialDegree == "3"){
