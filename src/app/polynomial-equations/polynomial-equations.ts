@@ -85,8 +85,12 @@ export class PolynomialEquations {
     let E = (2 * b * b * b) - (9 * a * b * c) + (27 * a * a * d);
     let F = (b * b) - (3 * a * c);
     let G = (E * E) - (4 * F * F * F);
-    
-    let solution = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G))));
-    this.result = "The solution of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers is " + String(solution);
+    if(a == 0){
+      this.result = "ERROR! The variable a can not be zero.";
+    }
+    else{
+      let solution = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G))));
+      this.result = "The solution of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers is " + String(solution);      
+    }
   }
 }
