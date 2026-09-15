@@ -1,0 +1,25 @@
+.titel{
+    font-size: 45px;
+    color:cadetblue;
+}
+
+.big_comment_1{
+    font-size: 28px;
+    color: rgb(20, 135, 170);
+}
+
+.big_comment_2{
+    font-size: 28px;
+    color: rgb(30, 179, 30);
+}
+
+.big_comment_3{
+    font-size: 28px;
+    color: rgb(135, 66, 18);
+}
+
+.equation1{
+    font-size: 20px;
+    color: rgb(20, 135, 170); 
+    text-align: right;  
+}
