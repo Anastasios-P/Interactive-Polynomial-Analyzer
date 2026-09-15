@@ -1,1 +1,43 @@
-<p>polynomial-equations works!</p>
+<br><br><br>
+<span class = "titel">Polynomische Gleichungen</span>
+<h3></h3>
+<div>
+    <div style="font-size: 25px;">
+        <label style="color: blueviolet;">Please choose the polynomial degree:</label>
+        <select [(ngModel)]="chosenPolynomialDegree" style="color: rgb(134, 106, 159);">
+            <option [ngValue]="null" style="color:blue;">please choose..</option>
+            <option [ngValue]="1" style="color: rgb(20, 135, 170);">1. Grade</option>
+            <option [ngValue]="2" style="color:rgb(30, 179, 30)">2. Grade</option>            
+            <option [ngValue]="3" style="color: rgb(135, 66, 18);">3. Grade</option>            
+        </select>
+    </div>
+</div>
+<h3></h3>
+
+@if(chosenPolynomialDegree == "1"){
+    <div>
+        <label class = "big_comment_1">Please fill in the 1. degree equation:</label>
+        <br>
+        <input [(ngModel)] = "x1" type = "text" value = "" class = "equation1">
+        <label class = "equation1">x + </label>
+
+        <input [(ngModel)] = "x" type = "text" value = "" class = "equation1">
+        <label class = "equation1"> = 0</label>
+    </div>
+    <div>
+        <br>
+        <button (click) = "calculateEquation1()" class = "big_comment_1">Calculate</button>
+        <br><br>
+        <label class = "big_comment_1">The solution of the equation {{x1}}x + {{x}} = 0 is {{solution1}}</label>
+    </div>
+}
+@else if(chosenPolynomialDegree == "2"){
+    <div>
+        <label class = "big_comment_2">Please fill in the 2. degree equation:</label>
+    </div>
+}
+@else if(chosenPolynomialDegree == "3"){
+    <div>
+        <label class = "big_comment_3">Please fill in the 3. degree equation:</label>
+    </div>
+}
