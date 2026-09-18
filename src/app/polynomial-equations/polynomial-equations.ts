@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DiagramPolynomialEquations } from '../diagram-polynomial-equations/diagram-polynomial-equations';
 
 @Component({
   selector: 'app-polynomial-equations',
-  imports: [FormsModule],
+  imports: [FormsModule, DiagramPolynomialEquations],
   templateUrl: './polynomial-equations.html',
   styleUrl: './polynomial-equations.css',
 })
@@ -26,11 +27,11 @@ export class PolynomialEquations {
     let solution = 0;
 
     if(a == 0){
-      this.result = "ERROR! The variable a can not be zero.";
+      this.result = "ERROR! The variable a cannot be zero.";
     }
     else{
       solution = -(b / a);
-      this.result = "The solution of the equation " + String(a) + "x + " + String(b) + " = 0 is " + String(solution);
+      this.result = "The solution of the equation " + String(a) + "x + " + String(b) + " = 0 is x = " + String(solution) + ".";
     }
   }
 
@@ -52,7 +53,7 @@ export class PolynomialEquations {
     let solution2 = 0;
 
     if(a == 0){
-      this.result = "ERROR! The variable a can not be zero.";
+      this.result = "ERROR! The variable a cannot be zero.";
     }
     else{
       if(D < 0){
@@ -60,12 +61,12 @@ export class PolynomialEquations {
       }
       else if(D == 0){
         solution = -b / (2 * a);
-        this.result = "The solution of the equation " + String(a) + "x² + " + String(b) + "x + " + String(c) + " = 0 is " + String(solution);        
+        this.result = "The solution of the equation " + String(a) + "x² + " + String(b) + "x + " + String(c) + " = 0 is x = " + String(solution) + ".";        
       }
       else{
         solution = ((-b) + Math.sqrt(D)) / (2 * a);
         solution2 = ((-b) - Math.sqrt(D)) / (2 * a);        
-        this.result = "The solutions of the equation " + String(a) + "x² + " + String(b) + "x + " + String(c) + " = 0 are " + String(solution) + " and " + String(solution2);          
+        this.result = "The solutions of the equation " + String(a) + "x² + " + String(b) + "x + " + String(c) + " = 0 are x1 = " + String(solution) + " and x2 = " + String(solution2) + ".";          
       }
     }
   }  
@@ -86,11 +87,11 @@ export class PolynomialEquations {
     let F = (b * b) - (3 * a * c);
     let G = (E * E) - (4 * F * F * F);
     if(a == 0){
-      this.result = "ERROR! The variable a can not be zero.";
+      this.result = "ERROR! The variable a cannot be zero.";
     }
     else{
       let solution = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G))));
-      this.result = "The solution of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers is " + String(solution);      
+      this.result = "The solution of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers is x = " + String(solution) + ".";      
     }
   }
 }
