@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
@@ -10,8 +10,14 @@ Chart.register(...registerables);
 })
 export class DiagramPolynomialEquations {
 
-  xAxis: number[] = [1,2,3,4,5,6,7,8];
-  daten: number[] = [1,2,3,4,3,2,1,0];
+  @Input() a: string = "";
+  @Input() b: string = "";
+  @Input() c: string = "";
+  @Input() d: string = "";
+  @Input() degree: string = "";
+
+  xAxis: number[] = [];
+  data: number[] = [];
 
   public config: any = {
   type: 'line',
@@ -19,15 +25,30 @@ export class DiagramPolynomialEquations {
   labels: this.xAxis,
   datasets: [{
   label: '',
-  data: this.daten,
+  data: this.data,
   borderColor: 'rgb(75, 192, 192)',
   }]
   }
   };
   chart: any;
+  
+  showDiagram(): void{ 
+    if((this.degree === "1") == false){//If it is a first degree equation..
+      for(let i = 0; i < this.xAxis.length; i++){
+        this.xAxis.pop();
+      }
+      for(let i = 0; i < this.data.length; i++){
 
-  ngOnInit(): void{ 
-    var element = <HTMLCanvasElement>document.getElementById('equationDiagram');
-    this.chart = new Chart(element, this.config);  
+      }
+
+      let solution = 0;
+      for(let i = -10; i < 11; i++){
+        this.xAxis.push(i);
+        solution = (Number(this.a) * i) + Number(this.b);
+        this.data.push(solution);
+      }
+      var element = <HTMLCanvasElement>document.getElementById('equationDiagram');
+      this.chart = new Chart(element, this.config);     
+    }  
   }
 }
