@@ -8,7 +8,7 @@
 ##### npm install -g @angular/cli
 ### Install a local TypeScript developement version:
 #### npm install --save-dev typescript
-##### type the command above when you are in the directory of this project
+##### Enter command above when in the directory of this project
 ### ng new extended-calculator
 #### Which stylesheet system would you like to use?
 ##### CSS
@@ -19,7 +19,7 @@
 ### ng generate component diagram-polynomial-equations
 ### npm install chart.js --legacy-peer-deps
 ### npm install ng2-charts --legacy-peer-deps
-#### type in the 5 commands above when you are in the directory of this project
+#### Enter the 5 commands above when in the directory of this project
 ### Then replace the src folder in your newly created angular project with the src folder in this repository.
 ### Then go to the directory of this project and type in: ng serve --open
 # This project is still in progress..
