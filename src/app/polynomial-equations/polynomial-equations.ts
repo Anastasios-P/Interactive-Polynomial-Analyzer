@@ -14,6 +14,8 @@ export class PolynomialEquations {
   x1: string = "";
   x2: string = "";
   x3: string = "";
+  fromX: string = "-10";
+  toX: string = "10";
   changeFlag: boolean = false;
 
   result: string = "";
