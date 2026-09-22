@@ -1,4 +1,5 @@
 import { Component, Input, OnInit} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { NgChartsConfiguration } from 'ng2-charts';
 
@@ -6,7 +7,7 @@ Chart.register(...registerables);
 
 @Component({
   selector: 'app-diagram-polynomial-equations',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './diagram-polynomial-equations.html',
   styleUrl: './diagram-polynomial-equations.css',
 })
@@ -17,6 +18,8 @@ export class DiagramPolynomialEquations implements OnInit{
   @Input() c: string = "";
   @Input() d: string = "";
   @Input() degree: string = "";
+  @Input() diagramXAxisFrom: string = "";
+  @Input() diagramXAxisTo: string = "";
 
   xAxis: string[] = [];
   data: number[] = [];
@@ -35,34 +38,36 @@ export class DiagramPolynomialEquations implements OnInit{
       this.data.pop();
     }
     //-------------------------------
+    let from = Number(this.diagramXAxisFrom);
+    let to = Number(this.diagramXAxisTo);
 
     let solution = 0;
     //1st grad equations.
     if(this.degree == "1"){
-      for(let i = -10; i < 11; i++){
+      for(let i = from; i <= to; i++){
         this.xAxis.push(String(i));
         solution = (Number(this.a) * i) + Number(this.b);
         this.data.push(solution);
       }  
-      this.diagramEquation = "Show diagram for the equation: " + this.a + "x + " + this.b + " = 0";      
+      this.diagramEquation = "Showing diagram for the equation: " + this.a + "x + " + this.b + " = 0";      
     }
     //2nd grad equations.
     else if(this.degree == "2"){
-      for(let i = -10; i < 11; i++){
+      for(let i = from; i <= to; i++){
         this.xAxis.push(String(i));
         solution = (Number(this.a) * i * i) + (Number(this.b) * i) + Number(this.c);
         this.data.push(solution);
       }  
-      this.diagramEquation = "Show diagram for the equation: " + this.a + "x² + " + this.b + "x + " + this.c  + " = 0";      
+      this.diagramEquation = "Showing diagram for the equation: " + this.a + "x² + " + this.b + "x + " + this.c  + " = 0";      
     }  
     //3rd grad equations.
     else if(this.degree == "3"){
-      for(let i = -10; i < 11; i++){
+      for(let i = from; i <= to; i++){
         this.xAxis.push(String(i));
         solution = (Number(this.a) * i * i * i) + (Number(this.b) * i * i) + (Number(this.c) * i) + Number(this.d);
         this.data.push(solution);
       }  
-      this.diagramEquation = "Show diagram for the equation: " + this.a + "x³ + " + this.b + "x² + " + this.c + "x + " + this.d  + " = 0";      
+      this.diagramEquation = "Showing diagram for the equation: " + this.a + "x³ + " + this.b + "x² + " + this.c + "x + " + this.d  + " = 0";      
     }       
 
     var config: ChartConfiguration = {
