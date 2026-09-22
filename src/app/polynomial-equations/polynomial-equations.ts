@@ -14,6 +14,7 @@ export class PolynomialEquations {
   x1: string = "";
   x2: string = "";
   x3: string = "";
+  changeFlag: boolean = false;
 
   result: string = "";
 
@@ -32,6 +33,14 @@ export class PolynomialEquations {
     else{
       solution = -(b / a);
       this.result = "The solution of the equation " + String(a) + "x + " + String(b) + " = 0 is x = " + String(solution) + ".";
+    }
+    
+    //Switch the changeFlag value everytime this function is called.
+    if(this.changeFlag == true){
+      this.changeFlag = false;
+    }
+    else{
+      this.changeFlag = true;   
     }
   }
 
@@ -69,6 +78,14 @@ export class PolynomialEquations {
         this.result = "The solutions of the equation " + String(a) + "x² + " + String(b) + "x + " + String(c) + " = 0 are x1 = " + String(solution) + " and x2 = " + String(solution2) + ".";          
       }
     }
+
+    //Switch the changeFlag value everytime this function is called.
+    if(this.changeFlag == true){
+      this.changeFlag = false;
+    }
+    else{
+      this.changeFlag = true;   
+    }    
   }  
 
   calculateEquation3(): void{
@@ -93,5 +110,13 @@ export class PolynomialEquations {
       let solution = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G))));
       this.result = "The solution of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers is x = " + String(solution) + ".";      
     }
+
+    //Switch the changeFlag value everytime this function is called.
+    if(this.changeFlag == true){
+      this.changeFlag = false;
+    }
+    else{
+      this.changeFlag = true;   
+    }    
   }
 }
