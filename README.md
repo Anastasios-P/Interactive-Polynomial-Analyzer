@@ -6,14 +6,14 @@
 ### Angular CLI
 #### Angular CLI global installieren:
 ##### npm install -g @angular/cli
-### Install a local TypeScript developement version:
-#### npm install --save-dev typescript
-##### Enter command above when in the directory of this project
 ### ng new extended-calculator
 #### Which stylesheet system would you like to use?
 ##### CSS
 #### Do you want to enable Serever-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? (y/N)
 ##### N
+### Install a local TypeScript developement version:
+#### npm install --save-dev typescript
+##### Enter command above when in the directory of this project
 ### ng generate component main-calculator
 ### ng generate component polynomial-equations
 ### ng generate component diagram-polynomial-equations
