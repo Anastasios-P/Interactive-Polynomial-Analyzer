@@ -1,5 +1,5 @@
 .titel{
-    font-size: 45px;
+    font-size: 35px;
     color:cadetblue;
 }
 
@@ -21,5 +21,23 @@
 .equation1{
     font-size: 20px;
     color: rgb(20, 135, 170); 
-    text-align: right;  
+    text-align: right;
+}
+
+.equation2{
+    font-size: 20px;
+    color: rgb(30, 179, 30); 
+    text-align: right;
+}
+
+.equation3{
+    font-size: 20px;
+    color: rgb(135, 66, 18); 
+    text-align: right;
+}
+
+.inputs{
+    font-size: 20px;
+    color: rgb(75, 192, 192); 
+    text-align: right;    
 }
