@@ -26,16 +26,24 @@
     </div>
     <div>
         <br>
+        <label class = "inputs">Starting number (x-axis):</label>
+        <input [(ngModel)] = "fromX" type = "text" value = "" class = "inputs">
+
+        <label class = "inputs">    Ending number (x-axis):</label>
+        <input [(ngModel)] = "toX" type = "text" value = "" class = "inputs">
+    </div>
+    <div>
+        <br>
         <button (click) = "calculateEquation1()" class = "big_comment_1">Calculate</button>
         <br><br>
         <label class = "big_comment_1">{{result}}</label>
     </div>
     <div>
-        @if(changeFlag == true){ <!--It switches when the value of the variable changeDiagramFlag changes and calls app-diagram-polynomial-equations again, so that the equation diagram refreshes.-->
-            <app-diagram-polynomial-equations [a] = "x1" [b] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
+        @if(changeFlag == true){ <!--It switches when the value of the variable changeDiagramFlag changes and calls app-diagram-polynomial-equations again but with other variable values, so that the equation diagram updates everytime the user gives in new number for the equation variables. Otherwise the diagram won't update.-->
+            <app-diagram-polynomial-equations [diagramXAxisFrom] = "fromX" [diagramXAxisTo] = "toX" [a] = "x1" [b] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
         }
         @else{
-            <app-diagram-polynomial-equations [a] = "x1" [b] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
+            <app-diagram-polynomial-equations [diagramXAxisFrom] = "fromX" [diagramXAxisTo] = "toX" [a] = "x1" [b] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
         }
     </div>      
 }
@@ -54,16 +62,24 @@
     </div>
     <div>
         <br>
+        <label class = "inputs">Starting number (x-axis):</label>
+        <input [(ngModel)] = "fromX" type = "text" value = "" class = "inputs">
+
+        <label class = "inputs">    Ending number (x-axis):</label>
+        <input [(ngModel)] = "toX" type = "text" value = "" class = "inputs">
+    </div>    
+    <div>
+        <br>
         <button (click) = "calculateEquation2()" class = "big_comment_2">Calculate</button>
         <br><br>
         <label class = "big_comment_2">{{result}}</label>
     </div>
     <div>
-        @if(changeFlag == true){ <!--It switches when the value of the variable changeDiagramFlag changes and calls app-diagram-polynomial-equations again, so that the equation diagram refreshes.-->
-            <app-diagram-polynomial-equations [a] = "x2" [b] = "x1" [c] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
+        @if(changeFlag == true){ <!--It switches when the value of the variable changeDiagramFlag changes and calls app-diagram-polynomial-equations again but with other variable values, so that the equation diagram updates everytime the user gives in new number for the equation variables. Otherwise the diagram won't update.-->
+            <app-diagram-polynomial-equations [diagramXAxisFrom] = "fromX" [diagramXAxisTo] = "toX" [a] = "x2" [b] = "x1" [c] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
         }
         @else{
-            <app-diagram-polynomial-equations [a] = "x2" [b] = "x1" [c] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
+            <app-diagram-polynomial-equations [diagramXAxisFrom] = "fromX" [diagramXAxisTo] = "toX" [a] = "x2" [b] = "x1" [c] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
         }
     </div>       
 }
@@ -85,16 +101,24 @@
     </div>
     <div>
         <br>
+        <label class = "inputs">Starting number (x-axis):</label>
+        <input [(ngModel)] = "fromX" type = "text" value = "" class = "inputs">
+
+        <label class = "inputs">    Ending number (x-axis):</label>
+        <input [(ngModel)] = "toX" type = "text" value = "" class = "inputs">
+    </div>    
+    <div>
+        <br>
         <button (click) = "calculateEquation3()" class = "big_comment_3">Calculate</button>
         <br><br>
         <label class = "big_comment_3">{{result}}</label>
     </div> 
     <div>
-        @if(changeFlag == true){ <!--It switches when the value of the variable changeDiagramFlag changes and calls app-diagram-polynomial-equations again, so that the equation diagram refreshes.-->
-            <app-diagram-polynomial-equations [a] = "x3" [b] = "x2" [c] = "x1" [d] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
+        @if(changeFlag == true){ <!--It switches when the value of the variable changeDiagramFlag changes and calls app-diagram-polynomial-equations again but with other variable values, so that the equation diagram updates everytime the user gives in new number for the equation variables. Otherwise the diagram won't update.-->
+            <app-diagram-polynomial-equations [diagramXAxisFrom] = "fromX" [diagramXAxisTo] = "toX" [a] = "x3" [b] = "x2" [c] = "x1" [d] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
         }
         @else{
-            <app-diagram-polynomial-equations [a] = "x3" [b] = "x2" [c] = "x1" [d] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
+            <app-diagram-polynomial-equations [diagramXAxisFrom] = "fromX" [diagramXAxisTo] = "toX" [a] = "x3" [b] = "x2" [c] = "x1" [d] = "x" [degree] = "chosenPolynomialDegree"></app-diagram-polynomial-equations>
         }
     </div>         
 }
