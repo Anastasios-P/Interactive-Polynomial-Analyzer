@@ -1,5 +1,4 @@
 # ExtendedCalculator 
-# Work in Progress..
 ## Prerequisites:
 ### Node.js
 ### npm
@@ -22,7 +21,6 @@
 #### Enter the 5 commands above when in the directory of this project
 ### Then replace the src folder in your newly created angular project with the src folder in this repository.
 ### Then go to the directory of this project and type in: ng serve --open
-# This project is still in progress..
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
 
