@@ -25,6 +25,7 @@ export class DiagramPolynomialEquations implements OnInit{
   data: number[] = [];
   diagramEquation: string = "";
   chart: any;
+  step: number = 1;
 
   ngOnInit(): void{  
     //Delete the previous Arrays..    
@@ -41,10 +42,39 @@ export class DiagramPolynomialEquations implements OnInit{
     let from = Number(this.diagramXAxisFrom);
     let to = Number(this.diagramXAxisTo);
 
+    //Calculate the distance between the points in the x-axis.
+    if((to - from) < 0.001){
+      this.step = 0.00001;
+    }
+    else if((to - from) < 0.01){
+      this.step = 0.0001;
+    }
+    else if((to - from) < 0.1){
+      this.step = 0.001;
+    }
+    else if((to - from) < 1){
+      this.step = 0.01;
+    }
+    else if((to - from) < 10){
+      this.step = 0.1;
+    }
+    else if((to - from) < 100){
+      this.step = 1;
+    }
+    else if((to -from) < 1000){
+      this.step = 10
+    }
+    else if((to - from) < 10000){
+      this.step = 100;
+    }
+    else{
+      this.step = 1000;
+    }
+
     let solution = 0;
     //1st grad equations.
     if(this.degree == "1"){
-      for(let i = from; i <= to; i++){
+      for(let i = from; i <= to; i = i + this.step){
         this.xAxis.push(String(i));
         solution = (Number(this.a) * i) + Number(this.b);
         this.data.push(solution);
@@ -53,7 +83,7 @@ export class DiagramPolynomialEquations implements OnInit{
     }
     //2nd grad equations.
     else if(this.degree == "2"){
-      for(let i = from; i <= to; i++){
+      for(let i = from; i <= to; i = i + this.step){
         this.xAxis.push(String(i));
         solution = (Number(this.a) * i * i) + (Number(this.b) * i) + Number(this.c);
         this.data.push(solution);
@@ -62,7 +92,7 @@ export class DiagramPolynomialEquations implements OnInit{
     }  
     //3rd grad equations.
     else if(this.degree == "3"){
-      for(let i = from; i <= to; i++){
+      for(let i = from; i <= to; i = i + this.step){
         this.xAxis.push(String(i));
         solution = (Number(this.a) * i * i * i) + (Number(this.b) * i * i) + (Number(this.c) * i) + Number(this.d);
         this.data.push(solution);
