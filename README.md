@@ -1,4 +1,4 @@
-# ExtendedCalculator 
+# Interactive polynomial analysis and visualization application
 ## Prerequisites:
 ### Node.js
 ### npm
