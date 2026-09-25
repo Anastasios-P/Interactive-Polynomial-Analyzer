@@ -110,7 +110,15 @@ export class PolynomialEquations {
     }
     else{
       let solution = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G))));
-      this.result = "The solution of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers is x = " + String(solution) + ".";      
+      let solution2 = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G))));
+      let solution3 = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G))));      
+      
+      if((solution == solution2) && (solution == solution3)){
+        this.result = "The solution of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers is x = " + String(solution) + ".";
+      }
+      else{
+        this.result = "The solutions of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers are x = " + String(solution) + ", x1 = " + String(solution2) + " and x3 = " + String(solution3) + ".";
+      }
     }
 
     //Switch the changeFlag value everytime this function is called.
