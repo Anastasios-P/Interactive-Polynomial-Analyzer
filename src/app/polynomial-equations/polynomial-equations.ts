@@ -93,7 +93,7 @@ export class PolynomialEquations {
   calculateEquation3(): void{
     // ax³ + bx² + cx + d = 0, a = x3, b = x2, c = x1, d = x
     // E = 2b³ - 9abc + 27a²d
-    // F = b² - 3ac
+    // F = (b² - 3ac)³
     // G = E² - 4(F³)
     // x = -(b/3a) - ((1/3a) * cbrt(0.5(E + sqrt(G)))) - ((1/3a) * cbrt(0.5(E - sqrt(G)))) : a ≠ 0
 
@@ -102,17 +102,27 @@ export class PolynomialEquations {
     let c = Number(this.x1);
     let d = Number(this.x);
 
-    let E = (2 * b * b * b) - (9 * a * b * c) + (27 * a * a * d);
-    let F = (b * b) - (3 * a * c);
-    let G = (E * E) - (4 * F * F * F);
+    let E = (2 * (b * b * b)) - (9 * (a * b * c)) + (27 * (a * a)  * d);
+    let F = ((b * b) - (3 * (a * c))) * ((b * b) - (3 * (a * c))) * ((b * b) - (3 * (a * c)));
+    let G = (E * E) - (4 * F);
     if(a == 0){
       this.result = "ERROR! The variable a cannot be zero.";
     }
     else{
-      let solution = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G))));
-      let solution2 = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E + Math.sqrt(G))));
-      let solution3 = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G)))) -((1 / (3 * a)) * Math.cbrt(0.5 * (E - Math.sqrt(G))));      
-      
+      let solution, solution2, solution3;
+      if(G < 0){
+        G = (Math.sqrt(-G) / Math.sqrt(2));
+        solution = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + G)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E - G))));
+        solution2 = -(b / (3 * a)) + (((1 - (Math.sqrt(3) * Math.sqrt(2))) / (6 * a)) * Math.cbrt(0.5 * (E + G))) + (((1 + (Math.sqrt(3) * Math.sqrt(2))) / (6 * a)) * Math.cbrt(0.5 * (E - G)));         
+        solution3 = -(b / (3 * a)) + (((1 - Math.sqrt(3)) / (Math.sqrt(3) * a)) * Math.cbrt(0.5 * (E + G))) + (((1 - Math.sqrt(3)) / (Math.sqrt(3) * a)) * Math.cbrt(0.5 * (E - G)));          
+      }
+      else{
+        G = Math.sqrt(G);
+        solution = -(b / (3 * a)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E + G)) - ((1 / (3 * a)) * Math.cbrt(0.5 * (E - G))));
+        solution2 = -(b / (3 * a)) + (((1 - (Math.sqrt(3) * Math.sqrt(2))) / (6 * a)) * Math.cbrt(0.5 * (E + G))) + (((1 + (Math.sqrt(3) * Math.sqrt(2))) / (6 * a)) * Math.cbrt(0.5 * (E - G)));         
+        solution3 = -(b / (3 * a)) + (((1 - Math.sqrt(3)) / (Math.sqrt(3) * a)) * Math.cbrt(0.5 * (E + G))) + (((1 - Math.sqrt(3)) / (Math.sqrt(3) * a)) * Math.cbrt(0.5 * (E - G)));            
+      }
+
       if((solution == solution2) && (solution == solution3)){
         this.result = "The solution of the equation " + String(a) + "x³ + " + String(b) + "x² + " + String(c) + "x + " + String(d) + " = 0 in the set of real numbers is x = " + String(solution) + ".";
       }
