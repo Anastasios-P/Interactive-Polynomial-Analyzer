@@ -5,7 +5,7 @@
 ### Angular CLI
 #### Angular CLI global installieren:
 ##### npm install -g @angular/cli
-### ng new extended-calculator
+### ng new Interactive-Polynomial-Analyzer
 #### Which stylesheet system would you like to use?
 ##### CSS
 #### Do you want to enable Serever-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? (y/N)
