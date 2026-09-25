@@ -43,28 +43,34 @@ export class DiagramPolynomialEquations implements OnInit{
     let to = Number(this.diagramXAxisTo);
 
     //Calculate the distance between the points in the x-axis.
-    if((to - from) < 0.001){
+    if((to -from) < 0.0001){
+      this.step = 0.000001;
+    }
+    else if((to - from) < 0.001){
       this.step = 0.00001;
     }
     else if((to - from) < 0.01){
-      this.step = 0.0001;
+      this.step = 0.00001;
     }
     else if((to - from) < 0.1){
-      this.step = 0.001;
+      this.step = 0.0001;
     }
     else if((to - from) < 1){
-      this.step = 0.01;
+      this.step = 0.001;
     }
     else if((to - from) < 10){
-      this.step = 0.1;
+      this.step = 0.01;
     }
     else if((to - from) < 100){
-      this.step = 1;
+      this.step = 0.1;
     }
     else if((to -from) < 1000){
-      this.step = 10
+      this.step = 1
     }
     else if((to - from) < 10000){
+      this.step = 10;
+    }
+    else if((to - from) < 100000){
       this.step = 100;
     }
     else{
@@ -109,7 +115,6 @@ export class DiagramPolynomialEquations implements OnInit{
         data: this.data,
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
         }]
       }
     }; 
